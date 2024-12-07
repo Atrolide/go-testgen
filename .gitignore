@@ -1,0 +1,15 @@
+# Git files
+.git/
+
+# IDE files
+.vscode/
+
+# Desktop ini file
+desktop.ini
+
+# Build and archive private dirs
+build/
+archive/
+
+# Go modules
+go.sum
