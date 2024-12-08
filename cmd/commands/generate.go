@@ -1,7 +1,7 @@
 package commands
 
 import (
-	"fmt"
+	"github.com/Atrolide/go-testgen/internal/generator"
 	"github.com/spf13/cobra"
 )
 
@@ -9,8 +9,7 @@ var generateCmd = &cobra.Command{
 	Use:   "generate",
 	Short: "Generate a file",
 	Run: func(cmd *cobra.Command, args []string) {
-		// TODO: Call generator method once created
-		fmt.Println("Generating a file...")
+		generator.FileGen()
 	},
 }
 
