@@ -7,8 +7,6 @@ LINUX_DIR = $(BUILD_DIR)/testgen_linux_amd64
 WINDOWS_DIR = $(BUILD_DIR)/testgen_windows_amd64
 LINUX_BIN = $(LINUX_DIR)/testgen
 WINDOWS_BIN = $(WINDOWS_DIR)/testgen.exe
-LINUX_CONFIG = $(LINUX_DIR)/config.ini
-WINDOWS_CONFIG = $(WINDOWS_DIR)/config.ini
 
 # Default target
 all: clean build 
@@ -31,6 +29,5 @@ clean:
 help:
 	@echo "Makefile commands:"
 	@echo "  make build        - Build the project for both Linux and Windows"
-	@echo "  make config       - Generate the config file for both Linux and Windows"
 	@echo "  make clean        - Clean up build artifacts"
 	@echo "  make help         - Show this help message"
