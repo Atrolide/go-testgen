@@ -10,6 +10,3 @@ desktop.ini
 # Build and archive private dirs
 build/
 archive/
-
-# Go modules
-go.sum
