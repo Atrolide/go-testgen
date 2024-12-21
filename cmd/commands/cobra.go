@@ -1,11 +1,6 @@
 package commands
 
 import (
-	"fmt"
-	"os"
-
-	"github.com/Atrolide/go-testgen/internal/misc"
-	"github.com/mitchellh/colorstring"
 	"github.com/spf13/cobra"
 )
 
@@ -14,16 +9,13 @@ var rootCmd = &cobra.Command{
 	Short: "Testgen is a sample test file generator",
 	Long:  `A fast generator for sample test files, supporting multiple programming languages.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		// Check if the --version flag is set
-		if versionFlag, _ := cmd.Flags().GetBool("version"); versionFlag {
+		versionFlag, _ := cmd.Flags().GetBool("version")
+		if versionFlag {
 			// Call versionCmd to print the version
 			versionCmd.Run(cmd, args)
-			os.Exit(0) // Exit after displaying the version
+			return
 		}
-
-		// If --version flag is not set, output ASCII art and help
-		misc.AsciiArt() // Outputs the ASCII art
-		cmd.Help()      // Outputs the help message
+		cmd.Help() // Outputs the help message
 	},
 }
 
@@ -31,10 +23,10 @@ func init() {
 	// Disable the default completion command
 	rootCmd.CompletionOptions.DisableDefaultCmd = true
 
-	// Hack: Disable command suggestions for unknown commands
+	// Disable command suggestions for unknown commands
 	rootCmd.DisableSuggestions = true
 
-	// Silence usage and errors
+	// Silence default usage and error outputs
 	rootCmd.SilenceUsage = true
 	rootCmd.SilenceErrors = true
 
@@ -44,13 +36,6 @@ func init() {
 
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
-		// Output error
-		// Todo: Customize error message, kick out to another file, call a command here
-		fmt.Println(colorstring.Color(fmt.Sprintf("\n[bold][red]Error: %s\n", err.Error())))
-
-		// Output help
-		// Todo: Output help for command on which the error occured
-		rootCmd.Help()
-		os.Exit(1)
+		// Handle errors
 	}
 }
