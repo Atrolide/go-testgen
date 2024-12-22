@@ -1,6 +1,8 @@
 package commands
 
 import (
+	"fmt"
+	"github.com/mitchellh/colorstring"
 	"github.com/spf13/cobra"
 )
 
@@ -36,6 +38,9 @@ func init() {
 
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
-		// Handle errors
+		// TODO: Enhance error handling
+		errorMessage := fmt.Sprintf("\n[bold][red]Error: %s\n", err)
+		fmt.Println(colorstring.Color(errorMessage))
+		return
 	}
 }
