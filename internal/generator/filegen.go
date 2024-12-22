@@ -2,9 +2,10 @@ package generator
 
 import (
 	"fmt"
+	"os"
+	"path/filepath"
 	"github.com/Atrolide/go-testgen/pkg/helpers"
 	"github.com/mitchellh/colorstring"
-	"time"
 )
 
 // TEMP: Mock method for testing purposes. Replace with real implementation.
@@ -18,15 +19,54 @@ func FileGenByFile(fileFlag string) {
 		return
 	}
 
-	fmt.Printf("\nGenerating a test for the file: %s...\n\n", fileFlag)
+	// Extract file name and extension from the provided path
+	fileName := filepath.Base(fileFlag)
+	ext := filepath.Ext(fileName)
+	baseName := fileName[:len(fileName)-len(ext)] // Strip the extension
 
-	startTime := time.Now()
-	time.Sleep(time.Duration(0.021 * float64(time.Second))) // Simulate file generation delay
-	elapsedTime := time.Since(startTime)
+	// Define the test directory
+	testDir := "tests"
 
-	elapsedTimeMs := elapsedTime.Seconds() * 1000
-	elapsedTimeFormatted := fmt.Sprintf("%.2f ms", elapsedTimeMs)
+	// Check if 'tests' directory exists, if not, create it
+	if _, err := os.Stat(testDir); os.IsNotExist(err) {
+		fmt.Printf("Creating directory '%s'...\n", testDir)
+		if err := os.Mkdir(testDir, os.ModePerm); err != nil {
+			errorMessage := fmt.Sprintf("\n[bold][red]Error: Failed to create directory '%s': %v\n", testDir, err)
+			fmt.Println(colorstring.Color(errorMessage))
+			return
+		}
+	}
 
-	successMessage := fmt.Sprintf("[bold][green]Test File Generated for '%s' in %s\n", fileFlag, elapsedTimeFormatted)
+	// Define the test file name
+	testFileName := fmt.Sprintf("%s_test%s", baseName, ext)
+	testFilePath := filepath.Join(testDir, testFileName)
+
+	// Check if the test file already exists
+	if _, err := os.Stat(testFilePath); !os.IsNotExist(err) {
+		// If the file exists, return without overwriting
+		errorMessage := fmt.Sprintf("\n[bold][red]Error: The test file '%s' already exists. Aborting generation to avoid overwriting.\n", testFilePath)
+		fmt.Println(colorstring.Color(errorMessage))
+		return
+	}
+
+	// Create the test file
+	testFile, err := os.Create(testFilePath)
+	if err != nil {
+		errorMessage := fmt.Sprintf("\n[bold][red]Error: Failed to create test file '%s': %v\n", testFilePath, err)
+		fmt.Println(colorstring.Color(errorMessage))
+		return
+	}
+	defer testFile.Close()
+
+	// Add a comment indicating the file was generated
+	comment := "// Generated with testgen @github.com/Atrolide/go-testgen\n"
+	if _, err := testFile.WriteString(comment); err != nil {
+		errorMessage := fmt.Sprintf("\n[bold][red]Error: Failed to write to test file '%s': %v\n", testFilePath, err)
+		fmt.Println(colorstring.Color(errorMessage))
+		return
+	}
+
+	// Output success message
+	successMessage := fmt.Sprintf("[bold][green]Test File Generated for '%s' at '%s'\n", fileFlag, testFilePath)
 	fmt.Println(colorstring.Color(successMessage))
 }
