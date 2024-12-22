@@ -18,6 +18,7 @@ var generateCmd = &cobra.Command{
 			generator.FileGenByFile(fileFlag)
 			return
 		}
+		cmd.Help()
 	},
 }
 
