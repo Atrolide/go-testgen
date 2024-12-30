@@ -52,6 +52,10 @@ The project also uses a [`Rakefile`](Rakefile) for various other tasks:
 ![Gem version](https://img.shields.io/badge/Gem-3.3.5-red)
 ![Rake version](https://img.shields.io/badge/Rake-13.2.1-red)
 
+> [!IMPORTANT]  
+> Requires installation of `go fmt`, `go test`, and `go sec`.<br><br>
+> Check [Go Tools Installation Instructions](INSTALL.md#gofmt--gotest--gosec)
+
 ## License
 This project is licensed under the [MIT License](https://opensource.org/license/mit). For more details, refer to the [LICENSE](LICENSE) file.
 
