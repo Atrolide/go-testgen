@@ -9,4 +9,9 @@ desktop.ini
 
 # Build and archive private dirs
 build/
-archive/
+
+# Demo files
+demo/
+
+# Logs
+logs/
