@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/Atrolide/go-testgen/cmd/commands" 
+	"github.com/Atrolide/go-testgen/cmd/commands"
 )
 
 func main() {
