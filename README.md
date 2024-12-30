@@ -7,6 +7,12 @@
 > [!NOTE]  
 > The tool is currently under development.
 
+## Go Documentation
+For detailed package documentation, visit the `Testgen` page on [pkg.go.dev](https://pkg.go.dev) by clicking on the badge below:
+
+[![Go Reference](https://pkg.go.dev/badge/github.com/Atrolide/go-testgen@master.svg)](https://pkg.go.dev/github.com/Atrolide/go-testgen@master)
+
+
 ## Building the Project
 
 To build the project, you can use the provided [`Makefile`](Makefile):
