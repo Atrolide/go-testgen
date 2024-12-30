@@ -2,6 +2,8 @@
 
 `Testgen` is a tool designed to generate sample test files for multiple programming languages.
 
+![Go version](https://img.shields.io/badge/Go-1.23-blue)
+
 > [!NOTE]  
 > The tool is currently under development.
 
@@ -21,6 +23,8 @@ To build the project, you can use the provided [`Makefile`](Makefile):
 > [!IMPORTANT]  
 > Requires installation of `GNU MAKE`.<br><br>
 > Check [GNU MAKE Installation Instructions](INSTALL.md#gnu-make)
+
+![Make version](https://img.shields.io/badge/Make-4.3-red)
 
 ## Utility Scripts
 
@@ -44,8 +48,11 @@ The project also uses a [`Rakefile`](Rakefile) for various other tasks:
 > Requires installation of `ruby`, `gem`, and `rake`.<br><br>
 > Check [Ruby Installation Instructions](INSTALL.md#ruby--gem--rake)
 
-## License
+![Ruby version](https://img.shields.io/badge/Ruby-3.0-red)
+![Gem version](https://img.shields.io/badge/Gem-3.3.5-red)
+![Rake version](https://img.shields.io/badge/Rake-13.2.1-red)
 
+## License
 This project is licensed under the [MIT License](https://opensource.org/license/mit). For more details, refer to the [LICENSE](LICENSE) file.
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/Atrolide/go-testgen.svg)](https://pkg.go.dev/github.com/Atrolide/go-testgen)
+![License: MIT](https://img.shields.io/badge/License-MIT-purple)
