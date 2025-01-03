@@ -2,14 +2,15 @@ package generator
 
 import (
 	"fmt"
-	"os"
-	"path/filepath"
 	"github.com/Atrolide/go-testgen/pkg/helpers"
 	"github.com/mitchellh/colorstring"
+	"os"
+	"path/filepath"
 )
 
-// TEMP: Mock method for testing purposes. Replace with real implementation.
-// FIXME: Implement a proper file generation solution.
+// TEMP: Temporary function to generate a test file based on a provided file path.
+// REFACTOR: Refactor the file generation to use a template-based approach.
+// FIXME: Implement a proper file generation from templates, based on target file extension.
 
 func FileGenByFile(fileFlag string) {
 	// Use IsFile to check if the path is a valid file

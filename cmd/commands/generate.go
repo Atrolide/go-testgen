@@ -1,7 +1,9 @@
 package commands
 
 import (
+	"fmt"
 	"github.com/Atrolide/go-testgen/internal/generator"
+	"github.com/mitchellh/colorstring"
 	"github.com/spf13/cobra"
 )
 
@@ -18,7 +20,12 @@ var generateCmd = &cobra.Command{
 			generator.FileGenByFile(fileFlag)
 			return
 		}
-		cmd.Help()
+		// TODO: Enhance error handling
+		if err := cmd.Help(); err != nil {
+			errorMessage := fmt.Sprintf("\n[bold][red]Error: %s\n", err)
+			fmt.Println(colorstring.Color(errorMessage))
+			return
+		}
 	},
 }
 

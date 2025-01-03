@@ -17,7 +17,13 @@ var rootCmd = &cobra.Command{
 			versionCmd.Run(cmd, args)
 			return
 		}
-		cmd.Help() // Outputs the help message
+		// No flag outputs the help message
+		// TODO: Enhance error handling
+		if err := cmd.Help(); err != nil {
+			errorMessage := fmt.Sprintf("\n[bold][red]Error: %s\n", err)
+			fmt.Println(colorstring.Color(errorMessage))
+			return
+		}
 	},
 }
 

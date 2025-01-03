@@ -1,3 +1,5 @@
+# TODO: Split build/zip commands into separate targets(Windows, Linux)
+
 # Platform-specific build variables
 GOOS_LINUX      := linux
 GOOS_WINDOWS    := windows
